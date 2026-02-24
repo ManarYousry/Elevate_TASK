@@ -1,0 +1,45 @@
+.back-btn {
+  margin-bottom: 10px;
+  background: #eef2ff;
+  color: var(--primary);
+  border-radius: 8px;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 14px;
+  background: var(--card);
+}
+
+legend {
+  padding: 0 8px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.desc {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.comment {
+  padding: 10px 0;
+  border-top: 1px solid var(--border);
+
+  &:first-child {
+    border-top: none;
+  }
+}
+
+.comment-header {
+  font-size: 13px;
+  color: var(--text);
+}
+
+.comment p {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+}

@@ -1,0 +1,46 @@
+<h2 class="page-title">Issues</h2>
+
+<div class="toolbar">
+  <input [formControl]="search" placeholder="Search by title..." />
+  <a routerLink="/create-issue">➕ Create</a>
+</div>
+
+<ng-container *ngIf="vm$ | async as vm">
+  <div *ngIf="vm.error" class="state error">Failed to load issues</div>
+
+  <table class="issues-table" *ngIf="!vm.error">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Title</th>
+        <th>Preview</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let issue of vm.items; let i = index">
+        <td>{{ (vm.page - 1) * 10 + i + 1 }}</td>
+        <td>{{ issue.title }}</td>
+        <td>{{ issue.body | slice: 0: 60 }}...</td>
+        <td>
+          <a [routerLink]="['/issue', issue.id]" class="view-btn">View</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Pagination -->
+  <div class="pagination" *ngIf="vm.totalPages > 1">
+    <button (click)="prev()" [disabled]="vm.page === 1">Prev</button>
+
+    <button
+      *ngFor="let p of vm.pages"
+      (click)="goTo(p)"
+      [class.active]="p === vm.page">
+      {{ p }}
+    </button>
+
+    <button (click)="next()" [disabled]="vm.page === vm.totalPages">Next</button>
+  </div>
+</ng-container>

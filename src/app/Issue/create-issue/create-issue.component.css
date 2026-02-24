@@ -1,0 +1,62 @@
+.form-wrapper {
+  max-width: 600px;
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 14px;
+  background: var(--card);
+}
+
+legend {
+  padding: 0 8px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.field {
+  margin-bottom: 12px;
+
+  label {
+    display: block;
+    font-size: 13px;
+    margin-bottom: 4px;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  small {
+    color: var(--danger);
+    font-size: 12px;
+  }
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  button {
+    background: var(--primary);
+    color: white;
+    border-radius: 8px;
+  }
+
+  .cancel {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    color: var(--text);
+    background: transparent;
+  }
+}
+.text-danger{
+  color: var(--danger);
+}

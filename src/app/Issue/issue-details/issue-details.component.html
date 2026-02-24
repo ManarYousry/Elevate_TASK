@@ -1,0 +1,24 @@
+<h2 class="page-title">Issue Details</h2>
+
+<button class="back-btn" routerLink="/issue-list">⬅ Back to List</button>
+
+<ng-container *ngIf="data$ | async as data">
+
+  <fieldset class="card">
+    <legend>Issue</legend>
+    <h3>{{ data.issue.title }}</h3>
+    <p class="desc">{{ data.issue.body }}</p>
+  </fieldset>
+
+  <fieldset class="card">
+    <legend>Comments ({{ data.comments.length }})</legend>
+
+    <div *ngFor="let c of data.comments" class="comment">
+      <div class="comment-header">
+        <b>{{ c.email }}</b>
+      </div>
+      <p>{{ c.body }}</p>
+    </div>
+  </fieldset>
+
+</ng-container>

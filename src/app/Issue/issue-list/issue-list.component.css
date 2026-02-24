@@ -1,0 +1,92 @@
+.page-title {
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  input {
+    flex: 1;
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+
+  a {
+    background: var(--primary);
+    color: white;
+    padding: 8px 14px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+}
+
+.issues-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--card);
+  border-radius: 10px;
+  overflow: hidden;
+
+  th, td {
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  thead {
+    background: #eef2ff;
+  }
+
+  tbody tr:hover {
+    background: #f8fafc;
+  }
+}
+
+.view-btn {
+  background: var(--primary);
+  color: white;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+
+.state {
+  padding: 12px;
+  border-radius: 8px;
+  background: #f1f5f9;
+  text-align: center;
+}
+
+.error {
+  background: #fee2e2;
+  color: var(--danger);
+}
+.pagination {
+  display: flex;
+  gap: 6px;
+  justify-content: center;
+  margin-top: 12px;
+
+  button {
+    background: #eef2ff;
+    color: var(--primary);
+    border-radius: 6px;
+    padding: 6px 10px;
+
+    &.active {
+      background: var(--primary);
+      color: white;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  }
+}
