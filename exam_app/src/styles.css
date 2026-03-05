@@ -1,0 +1,128 @@
+
+
+
+/* src/styles.css */
+
+/* ✅ Correct for Tailwind v4 */
+@import "primeicons/primeicons.css";
+@layer tailwind, primeng;
+@import "tailwindcss";
+@import "tailwindcss-primeui";
+
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #ffffff;
+}
+
+/* PrimeNG overrides to match design */
+.p-inputtext {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+  padding: 10px 14px !important;
+  font-size: 14px !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+.p-inputtext:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1) !important;
+  outline: none !important;
+}
+
+.p-inputtext::placeholder {
+  color: #9ca3af !important;
+}
+
+.p-password .p-inputtext {
+  width: 100% !important;
+}
+
+.p-button {
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  padding: 11px 20px !important;
+  transition: all 0.2s !important;
+}
+
+.p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-secondary) {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+.p-button:not(.p-button-outlined):not(.p-button-text):not(.p-button-secondary):hover {
+  background: #1d4ed8 !important;
+  border-color: #1d4ed8 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
+}
+
+.p-select {
+  border: 1px solid #e5e7eb !important;
+  border-radius: 8px !important;
+}
+
+.p-stepper .p-stepper-separator {
+  background: #e5e7eb !important;
+}
+
+.p-stepper .p-step-header.p-highlight .p-step-number {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+.p-checkbox.p-highlight .p-checkbox-box {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+}
+
+.p-divider .p-divider-content {
+  background: transparent !important;
+}
+
+/* View transitions */
+@view-transition {
+  navigation: auto;
+}
+
+
+.iti__country-list {
+  height: 300px !important;
+}
+
+.iti {
+  width: 100% !important;
+}
+
+.iti__selected-flag {
+  width: 75px !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 35px;
+}
+
+.iti__flag-container {
+  background-color: white;
+  position: absolute;
+  z-index: 12;
+  top: 2px;
+  inset-inline-start: 5px;
+}
+input.iti__tel-input {
+  padding-inline-start: 85px !important;
+}
+.iti__dropdown-content {
+  border: 1px solid #ccc;
+  width: 350px !important;
+  padding: 1px;
+  border-collapse: collapse;
+}

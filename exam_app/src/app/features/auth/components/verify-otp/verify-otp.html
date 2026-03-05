@@ -1,0 +1,85 @@
+<div class="w-full animate-fadein">
+
+      <p-button  icon="pi  pi-arrow-left"  (onClick)="goBack()" [rounded]="true" [outlined]="true" />
+
+  <h2 class="text-3xl font-bold text-gray-900 mb-5">Verify OTP</h2>
+
+  <div class="flex items-center gap-2 mb-8 lg:hidden">
+    <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="w-4 h-4 text-white"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
+        />
+      </svg>
+    </div>
+    <span class="text-blue-700 font-semibold">Exam App</span>
+  </div>
+
+
+  <div class="w-full">
+
+
+    <p class="text-sm text-gray-500 mb-6">
+      Please enter the 6-digit code we have sent to:<br />
+      <span class="text-gray-800 font-medium">{{ storeData.email() }}</span>
+      <a class="text-blue-600 font-medium hover:underline ml-1 cursor-pointer" (click)="editEmail()">Edit</a>
+    </p>
+
+    <form [formGroup]="otpForm" >
+
+      <!-- OTP Input boxes -->
+      <div class="flex justify-center gap-3 mb-6">
+        <input
+          *ngFor="let ctrl of otpControls; let i = index"
+          #otpInput
+          type="text"
+          inputmode="numeric"
+          maxlength="1"
+          [formControl]="ctrl"
+          (input)="onOtpInput($event, i)"
+          (keydown)="onOtpKeyDown($event, i)"
+          (paste)="onPaste($event)"
+          class="w-11 h-11 text-center text-lg font-semibold border rounded-lg outline-none transition-all
+                 focus:border-blue-500 focus:ring-2 focus:ring-blue-100"
+          [ngClass]="{
+            'border-blue-500 bg-blue-50': ctrl.value,
+            'border-gray-300': !ctrl.value
+          }"
+        />
+      </div>
+
+      <!-- Resend -->
+      <p class="text-center text-sm text-gray-500 mb-6">
+        Didn't receive the code?
+        <button
+          type="button"
+          class="text-blue-600 font-medium hover:underline disabled:text-gray-400"
+          [disabled]="resendCooldown > 0"
+          (click)="resendCode()"
+        >
+          {{ resendCooldown > 0 ? 'Resend in ' + resendCooldown + 's' : 'Resend' }}
+        </button>
+      </p>
+
+        <app-button [config]="btnConfig" (clicked)="onVerify()"    [disabled]="otpForm.invalid" [loading]="isLoading"></app-button>
+
+      <p class="text-center text-sm text-gray-500 mt-4">
+        Already have an account?
+        <a routerLink="/login" class="text-blue-600 font-medium hover:underline">Login</a>
+      </p>
+
+    </form>
+  </div>
+
+
+
+</div>
