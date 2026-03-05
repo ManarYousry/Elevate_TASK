@@ -1,0 +1,161 @@
+
+ <div class="login-container w-full animate-fadein">
+
+ <h2 class="text-3xl font-bold text-gray-900 mb-5">{{loginConfig.label}}</h2>
+
+
+      <div class="flex items-center gap-2 mb-8 lg:hidden">
+        <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+          </svg>
+        </div>
+        <span class="text-blue-700 font-semibold">Exam App</span>
+      </div>
+
+     <form [formGroup]="registerForm" >
+
+      <!-- First Name & Last Name -->
+      <div class="flex gap-3 mb-4">
+        <div class="flex-1">
+          <label class="block text-sm font-medium text-gray-700 mb-1">First name</label>
+          <input
+            pInputText
+            formControlName="firstName"
+            placeholder="Ahmed"
+            class="w-full"
+            [ngClass]="{'ng-invalid ng-dirty': isInvalid('firstName')}"
+          />
+          @if(isInvalid('firstName')){
+          <small class="text-red-500 text-xs" >
+            First name is required
+          </small>
+        }
+        </div>
+        <div class="flex-1">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Last name</label>
+          <input
+            pInputText
+            formControlName="lastName"
+            placeholder="Abdullah"
+            class="w-full"
+            [ngClass]="{'ng-invalid ng-dirty': isInvalid('lastName')}"
+          />
+          @if(isInvalid('lastName')){
+          <small class="text-red-500 text-xs" >
+            Last name is required
+          </small>
+        }
+        </div>
+      </div>
+
+      <!-- Username -->
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+        <input
+          pInputText
+          formControlName="username"
+          placeholder="user123"
+          class="w-full"
+          [ngClass]="{'ng-invalid ng-dirty': isInvalid('username')}"
+        />
+        @if(isInvalid('username')){
+        <small class="text-red-500 text-xs" >
+          Username is required (min 3 characters)
+        </small>}
+      </div>
+
+      <!-- Email -->
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <input
+          pInputText
+          formControlName="email"
+          type="email"
+          placeholder="user@example.com"
+          class="w-full"
+          [ngClass]="{'ng-invalid ng-dirty': isInvalid('email')}"
+        />
+        @if(isInvalid('email')){
+        <small class="text-red-500 text-xs">
+          Please enter a valid email
+        </small>
+      }
+      </div>
+
+      <!-- Phone -->
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+
+
+                 <input
+    #phoneInput
+    formControlName="phone_number"
+    type="tel"
+
+    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+
+        @if(isInvalid('phone_number')){
+        <small class="text-red-500 text-xs" >
+          Phone number is required
+        </small>
+      }
+      </div>
+
+      <!-- Password -->
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+        <p-password
+          formControlName="password"
+          placeholder="••••••••"
+          [toggleMask]="true"
+          styleClass="w-full"
+          inputStyleClass="w-full"
+          [feedback]="false"
+          [ngClass]="{'ng-invalid ng-dirty': isInvalid('password')}"
+        />
+        @if(isInvalid('password')){
+
+
+        <small class="text-red-500 text-xs" >
+          Password must be at least 8 characters
+        </small>
+      }
+      </div>
+
+      <!-- Confirm Password -->
+      <div class="mb-6">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+        <p-password
+          formControlName="confirmPassword"
+          placeholder="••••••••"
+          [toggleMask]="true"
+          styleClass="w-full"
+          inputStyleClass="w-full"
+          [feedback]="false"
+          [ngClass]="{'ng-invalid ng-dirty': isInvalid('confirmPassword') || registerForm.hasError('passwordMismatch')}"
+        />
+        @if(registerForm.hasError('passwordMismatch') && registerForm.get('confirmPassword')?.touched){
+<small class="text-red-500 text-xs" >
+          Passwords do not match
+        </small>
+        }
+
+      </div>
+
+      <!-- Submit -->
+
+        <app-button [config]="loginConfig" (clicked)="onSubmit()" ></app-button>
+
+
+      <p class="text-center text-sm text-gray-500 mt-4">
+        Already have an account?
+        <a routerLink="/login" class="text-blue-600 font-medium hover:underline">Login</a>
+      </p>
+
+    </form>
+
+
+
+    </div>
