@@ -3,7 +3,7 @@
 
  <h2 class="text-3xl font-bold text-gray-900 mb-5">{{loginConfig.label}}</h2>
 
-
+ <form [formGroup]="form">
       <div class="flex items-center gap-2 mb-8 lg:hidden">
         <div class="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -21,15 +21,14 @@
           <input
             pInputText
             id="username"
-            [(ngModel)]="username"
+           formControlName="username"
             placeholder="user123"
             class="w-full"
-            [class.ng-invalid]="showError && !username"
-            [class.ng-dirty]="showError"
-          />
-          @if(showError && !username){
- <small  class="text-red-500 text-xs">Username is required</small>
-          }
+           [ngClass]="{'ng-invalid ng-dirty': isInvalid('username')}"
+        />
+        @if(isInvalid('username')){
+          <small class="text-red-500 text-xs"> Username is required</small>
+        }
 
         </div>
 
@@ -38,16 +37,15 @@
           <label for="password" class="text-sm font-medium text-gray-700">Password</label>
           <p-password
             id="password"
-            [(ngModel)]="password"
+           formControlName="password"
             [feedback]="false"
             [toggleMask]="true"
             placeholder="••••••••"
             styleClass="w-full"
             inputStyleClass="w-full"
-            [class.ng-invalid]="showError && !password"
-            [class.ng-dirty]="showError"
+            [ngClass]="{'ng-invalid ng-dirty': isInvalid('password')}"
           />
-          @if(showError && !password){
+          @if(isInvalid('password')){
  <small  class="text-red-500 text-xs">Password is required</small>
           }
 
@@ -79,5 +77,6 @@
           Create yours
         </a>
       </p>
-
+</form>
     </div>
+<p-toast />

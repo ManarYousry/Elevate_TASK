@@ -43,7 +43,7 @@ btnConfig: AppButtonConfig={
   private cooldownTimer: any;
 
   ngOnInit(): void {
-    debugger
+
    let email = this.storeData.email()
     // Build 6 individual FormControls
     this.otpControls = Array.from({ length: this.otpLength }, () =>

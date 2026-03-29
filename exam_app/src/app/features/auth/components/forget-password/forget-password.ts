@@ -7,6 +7,8 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { StoreData } from '../../services/store-data';
+import { AuthService } from '../../services/auth.service';
+import { ForgetPasswordResponse } from '../../interfaces/Auth';
 
 @Component({
   selector: 'app-forget-password',
@@ -22,6 +24,7 @@ import { StoreData } from '../../services/store-data';
 })
 export class ForgetPassword {
 storeData=inject(StoreData)
+private _authService=inject(AuthService)
 showResetEmailMsg:boolean=false
 btnConfig: AppButtonConfig={
    label: 'Continue',
@@ -32,13 +35,11 @@ btnConfig: AppButtonConfig={
 
 }
   email =this.storeData.email() ||"";
-
-  showError = false;
   loginError = '';
   isLoading = signal(false);
 
   onSubmit() {
-    this.showError = true;
+
     this.loginError = '';
 
     if (!this.email ) return;
@@ -46,14 +47,24 @@ btnConfig: AppButtonConfig={
     this.isLoading.set(true);
     this.storeData.updateEmail(this.email)
 
-    setTimeout(() => {
-      this.showResetEmailMsg=true;
- this.email= ""
-      this.email=this.storeData.email()
-      this.isLoading.set(false);
 
 
-    }, 1500);
+    this._authService.forgetPassword({ email:this.email }).subscribe({
+      next: (res:ForgetPasswordResponse) => {
+        this.showResetEmailMsg=true;
+         this.email= ""
+       this.email=this.storeData.email()
+        this.isLoading.set(false);},
+      error: (error:any)  => {
+        this.loginError = error.error?.message || 'An error occurred. Please try again later.';
+          this.isLoading.set(false);
+
+      },
+    });
+
+
+
+
   }
 
 goBack(){

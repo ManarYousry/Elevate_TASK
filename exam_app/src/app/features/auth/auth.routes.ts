@@ -36,7 +36,7 @@ export const auth_routes: Routes = [
           import('./components/forget-password/forget-password')
             .then(m => m.ForgetPassword),
       },
-       { path: 'create-password', loadComponent: () =>
+       { path: 'reset-password', loadComponent: () =>
           import('./components/create-password/create-password')
             .then(m => m.CreatePassword),
       },
