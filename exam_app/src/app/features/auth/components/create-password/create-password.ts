@@ -6,11 +6,10 @@ import { ButtonModule } from 'primeng/button';
 import { PasswordModule } from 'primeng/password';
 import { passwordNewMatchValidator, strongPasswordValidator } from '../../validators/validators';
 import { AppButtonConfig, Button } from "../../../../shared/components/button/button";
-import { AuthService } from '../../services/auth.service';
 import { MessageService } from 'primeng/api';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
-import { ResetPasswordResponse } from '../../interfaces/Auth';
+import { AuthService ,ResetPasswordResponse   } from '../../../../../../dist/auth';
 
 @Component({
   selector: 'app-create-password',

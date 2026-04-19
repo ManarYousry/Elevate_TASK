@@ -12,12 +12,11 @@ import { SelectModule } from 'primeng/select';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { OtpInputDirective } from '../../directives/otp-input.directive';
-import { AuthService } from '../../services/auth.service';
+ import { AuthService ,ConfirmEmailVerResponse, RegisterResponse, SendEmailVerResponse   } from '../../../../../../dist/auth';
 import { MessageService } from 'primeng/api';
 import { StoreData } from '../../services/store-data';
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
-import { ConfirmEmailVerResponse, RegisterResponse, SendEmailVerResponse } from '../../interfaces/Auth';
 
 @Component({
   selector: 'app-register',

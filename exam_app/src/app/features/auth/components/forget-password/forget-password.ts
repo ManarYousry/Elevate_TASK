@@ -7,8 +7,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { StoreData } from '../../services/store-data';
-import { AuthService } from '../../services/auth.service';
-import { ForgetPasswordResponse } from '../../interfaces/Auth';
+import { AuthService ,ForgetPasswordResponse   } from '../../../../../../dist/auth';
 
 @Component({
   selector: 'app-forget-password',

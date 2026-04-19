@@ -1,6 +1,13 @@
 {
-  "name": "auth",
-  "version": "0.0.1",
+  "name": "@manar_yousry/auth",
+  "version": "1.0.0",
+  "description": "This library is for authentication purposes",
+  "keywords": [
+    "auth",
+    "Tailwind",
+    "Primeng",
+    "Injection Token"
+  ],
   "peerDependencies": {
     "@angular/common": "^20.3.0",
     "@angular/core": "^20.3.0"
