@@ -5,12 +5,15 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { providePrimeNG } from 'primeng/config';
 import Aura from '@primeuix/themes/aura';
 import { provideHttpClient } from '@angular/common/http';
+import { provideAuth } from '../../dist/auth';
+import { environment } from '../environments/environment';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     // provideRouter(routes),
       provideHttpClient(),
+      provideAuth({ apiUrl: environment.apiUrl }),
      provideRouter(routes, withViewTransitions()),
     provideAnimationsAsync(),
     providePrimeNG({
