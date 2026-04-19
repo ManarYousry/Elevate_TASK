@@ -12,9 +12,9 @@ import { SelectModule } from 'primeng/select';
 import { InputGroupModule } from 'primeng/inputgroup';
 import { InputGroupAddonModule } from 'primeng/inputgroupaddon';
 import { OtpInputDirective } from '../../directives/otp-input.directive';
- import { AuthService ,ConfirmEmailVerResponse, RegisterResponse, SendEmailVerResponse   } from '../../../../../../dist/auth';
+ import { AuthService ,ConfirmEmailVerResponse, RegisterResponse, SendEmailVerResponse ,StoreData   } from '../../../../../../dist/auth';
 import { MessageService } from 'primeng/api';
-import { StoreData } from '../../services/store-data';
+
 import { MessageModule } from 'primeng/message';
 import { ToastModule } from 'primeng/toast';
 

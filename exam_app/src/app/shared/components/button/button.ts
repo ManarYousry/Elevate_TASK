@@ -17,8 +17,8 @@ export interface AppButtonConfig {
   [ngClass]="config?.styleClass"
   [disabled]="disabled || loading"
    (click)="onClick()" >
-   @if(config?.icon && config?.iconDirection=="left"){
-   <i  [class]="config.icon"></i>
+   @if(config?.icon && config?.iconDirection === "left"){
+   <i [class]="config?.icon"></i>
    }
 @if(!loading){
   <span >
@@ -26,8 +26,8 @@ export interface AppButtonConfig {
   </span>
 }
 
- @if(config?.icon && config?.iconDirection=="right"){
-   <i  [class]="config.icon"></i>
+ @if(config?.icon && config?.iconDirection === "right"){
+   <i [class]="config?.icon"></i>
    }
 @if(loading){
   <span >

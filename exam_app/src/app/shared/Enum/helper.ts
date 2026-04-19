@@ -10,5 +10,21 @@ export class APIs {
 
   };
 
+    public static readonly Dashboard= {
+    getAllDiplomas:"diplomas",
+    getDiplomaById:"diplomas/",
+    
+  };
+  public static readonly Questions= {
+   
+    getQuestionsByExamId:"questions/exam/",
+    
+  };
+   public static readonly Submittion= {
+   
+    submitExam:"submissions",
+    
+  };
+
 
 }

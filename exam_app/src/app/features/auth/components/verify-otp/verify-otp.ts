@@ -6,7 +6,7 @@ import { MessageModule } from 'primeng/message';
 import { InputTextModule } from 'primeng/inputtext';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
-import { StoreData } from '../../services/store-data';
+import { StoreData } from '../../../../../../dist/auth';
 
 @Component({
   selector: 'app-verify-otp',
