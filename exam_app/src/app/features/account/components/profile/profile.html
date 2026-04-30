@@ -1,0 +1,230 @@
+ <div class="register-wrapper h-[70vh] bg-white p-5 w-full animate-fadein">
+ <form [formGroup]="form">
+
+ <div class="  animate-fadein">
+    
+      <!-- First & Last Name -->
+      <div class="flex gap-3 mb-4">
+        <div class="flex-1">
+          <label class="block text-sm font-medium text-gray-700 mb-1">First name
+             <small class="text-red-500  text-lg font-bold">*</small>
+          </label>
+          <input
+            pInputText
+            formControlName="firstName"
+            placeholder="Ahmed"
+            class="w-full"
+            [ngClass]="{'ng-invalid ng-dirty': isInvalid('firstName')}"
+          />
+          @if(isInvalid('firstName')){
+            <small class="text-red-500 text-xs">First name is required</small>
+          }
+        </div>
+        <div class="flex-1">
+          <label class="block text-sm font-medium text-gray-700 mb-1">Last name
+             <small class="text-red-500  text-lg font-bold">*</small>
+          </label>
+          <input
+            pInputText
+            formControlName="lastName"
+            placeholder="Abdullah"
+            class="w-full"
+            [ngClass]="{'ng-invalid ng-dirty': isInvalid('lastName')}"
+          />
+          @if(isInvalid('lastName')){
+            <small class="text-red-500 text-xs">Last name is required</small>
+          }
+        </div>
+      </div>
+
+      <!-- Username -->
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Username
+          
+        </label>
+        <input
+          pInputText
+          [ngModelOptions]="{standalone: true}"
+         [(ngModel)]="username"
+       
+          class="w-full"
+          readonly
+          disabled
+        />
+       
+      </div>
+<div class="mb-4">
+        <label class="block text-sm font-medium flex flex-row justify-between text-gray-700 mb-1">
+          <span>
+          Email
+          <small class="text-red-500  text-lg font-bold">*</small>
+</span>
+           <span class="text-blue-500 cursor-pointer ml-3" (click)="openDialog()"> <i class="pi pi-pencil"></i>change Email</span>
+        </label>
+        <input
+          pInputText
+          [ngModelOptions]="{standalone: true}"
+          [(ngModel)]="email"
+          type="email"
+          readonly
+         
+          class="w-full"
+         
+        />
+      
+        
+      </div>
+      <!-- Phone -->
+      <div class="mb-4">
+        <label class="block text-sm font-medium text-gray-700 mb-1">Phone
+           <small class="text-red-500  text-lg font-bold">*</small>
+        </label>
+       <input
+    #phoneInput
+    formControlName="phone"
+    type="tel"
+
+    class="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+  />
+
+        @if(isInvalid('phone')){
+        <small class="text-red-500 text-xs" >
+          Phone number is required
+        </small>
+      }
+
+      </div>
+
+     
+<div class="flex justify-between mt-10">
+  
+         <app-button class="w-[45%]" [config]="deleteAccConfig" (clicked)="deleteAccount()"></app-button>
+
+ <app-button class="w-[45%]" [config]="saveChangeConfig" (clicked)="onSubmit()"></app-button>
+
+</div>
+       
+    
+    </div>
+    </form>
+    </div>
+
+
+    <p-toast position="bottom-right"></p-toast>
+  <p-confirmDialog key="deleteDialog" [style]="{ width: '470px' }">
+  <ng-template pTemplate="message">
+    <div class="flex flex-col items-center text-center p-6">
+      
+      <!-- Icon -->
+      <div class="icon-wrapper mb-3">
+        <i class="pi pi-exclamation-triangle text-red-500 text-3xl"></i>
+      </div>
+
+      <!-- Title -->
+      <h3 class="text-red-500 font-semibold text-lg mb-2">
+        Are you sure you want to delete your account?
+      </h3>
+
+      <!-- Subtitle -->
+      <p class="text-gray-500 text-sm">
+        This action is permanent and cannot be undone.
+      </p>
+
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="footer">
+    <div class="flex justify-between gap-4  py-5 px-3  bg-gray-100 w-full">
+
+      <!-- Cancel -->
+      <button
+        class="flex-1  bg-gray-200 hover:bg-gray-300 text-gray-700 py-2 transition"
+        (click)="confirmationService.close()">
+        Cancel
+      </button>
+
+      <!-- Delete -->
+      <button
+        class=" flex-1 bg-red-500 hover:bg-red-600 text-white py-2 transition"
+        (click)="onConfirmDelete()">
+        Yes, delete
+      </button>
+
+    </div>
+  </ng-template>
+</p-confirmDialog>
+
+
+<p-dialog [(visible)]="showEmailDialog" [modal]="true" [showHeader]="false" [style]="{width: '480px'}">
+  <div class="bg-white rounded-lg p-6 relative">
+    
+    <!-- Close Button -->
+    <button (click)="closeDialog()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600">
+      <i class="pi pi-times"></i>
+    </button>
+    
+    <!-- Step line indicator -->
+    <div class="flex items-center mb-6 mt-2 px-2">
+      <div class="w-3 h-3 rotate-45" [ngClass]="emailStep === 'email' || emailStep === 'otp' ? 'bg-blue-600' : 'bg-white border border-gray-300'"></div>
+      <div class="flex-1 h-px border-t border-dashed border-gray-300 mx-2"></div>
+      <div class="w-3 h-3 rotate-45" [ngClass]="emailStep === 'otp' ? 'bg-blue-600' : 'bg-white border border-gray-300'"></div>
+    </div>
+
+    <h2 class="text-xl font-bold text-gray-900 mb-6">Change Email</h2>
+
+    <!-- Email Step -->
+    <div *ngIf="emailStep === 'email'">
+      <h3 class="text-lg font-semibold text-blue-600 mb-4">Enter your new email</h3>
+      
+      <div class="mb-8">
+        <label class="block text-sm font-medium text-gray-700 mb-2 font-mono">Email</label>
+        <input
+          type="email"
+          [(ngModel)]="newEmail"
+          placeholder="user@example.com"
+          class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 font-mono"
+        />
+      </div>
+ <app-button class="w-[45%]"  [config]="emailChangeConfig" (clicked)="changeEmail()"></app-button>
+
+     
+    </div>
+
+    <!-- OTP Step -->
+    <div *ngIf="emailStep === 'otp'">
+      <h3 class="text-lg font-semibold text-blue-600 mb-2">Verify OTP</h3>
+      <p class="text-sm text-gray-600 mb-6 font-mono">
+        Please enter the 6-digits code we have sent to:<br>
+        <span class="font-medium text-gray-900">{{newEmail}}</span>. 
+        <a href="javascript:void(0)" (click)="emailStep = 'email'" class="text-blue-600 hover:underline">Edit</a>
+      </p>
+
+      <!-- OTP Inputs -->
+      <div class="flex justify-between gap-2 mb-6">
+        <input *ngFor="let i of [0,1,2,3,4,5]"
+               #otpInput
+               appOtpInput
+               [otpIndex]="i"
+               [otpInputs]="otpInputs"
+               (otpComplete)="onOtpComplete($event)"
+               (otpChange)="onOtpChange()"
+               type="text"
+               maxlength="1"
+               class="w-12 h-12 text-center text-xl font-semibold text-blue-600 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+        />
+      </div>
+
+      <p class="text-center text-sm text-gray-500 mb-8 font-mono">
+        You can request another code in: <span class="font-medium">{{timer}}s</span>
+      </p>
+
+      <button
+        (click)="verifyOtp()"
+        [disabled]="!isOtpComplete"
+        class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-md transition disabled:bg-blue-300 disabled:cursor-not-allowed">
+        Verify Code
+      </button>
+    </div>
+
+  </div>
+</p-dialog>

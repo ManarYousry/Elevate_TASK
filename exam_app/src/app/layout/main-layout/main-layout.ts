@@ -16,6 +16,6 @@ export class MainLayoutComponent {
     email=this.configureSer.UserEmail()
   sidebarLinks = [
     { label: 'Diplomas', icon: 'pi pi-th-large', route: '/dashboard' },
-    { label: 'Account Settings', icon: 'pi pi-user', route: '/settings' }
+    { label: 'Account Settings', icon: 'pi pi-user', route: 'account/profile' }
   ];
 }

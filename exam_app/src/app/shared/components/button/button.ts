@@ -15,7 +15,7 @@ export interface AppButtonConfig {
  template:`<button  pButton [type]="config?.type || 'button'"
 
   [ngClass]="config?.styleClass"
-  [disabled]="disabled || loading"
+  [disabled]="disabled"
    (click)="onClick()" >
    @if(config?.icon && config?.iconDirection === "left"){
    <i [class]="config?.icon"></i>

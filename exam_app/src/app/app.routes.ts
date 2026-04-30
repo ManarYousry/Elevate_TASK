@@ -5,6 +5,8 @@ import { DashboardComponent } from './features/dashboard/dashboard';
 import { ExamsListComponent } from './features/exams/exams-list';
 
 import { ExamComponent } from './features/quiz/exam';
+import { account_routes } from './features/account/account.routes';
+import { AccountLayout } from './features/account/account-layout/account-layout';
 
 export const routes: Routes = [
  ...auth_routes,
@@ -15,7 +17,14 @@ export const routes: Routes = [
      { path: 'dashboard', component: DashboardComponent },
      { path: 'exams/:id', component: ExamsListComponent },
      { path: 'quiz/:id', component: ExamComponent },
-     { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+     { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+     ...account_routes
+  //   {
+  //   path: 'account',
+   
+  //   component: AccountLayout,
+  //   children:account_routes
+  // }
    ]
  },
   {

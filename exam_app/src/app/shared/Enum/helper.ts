@@ -1,3 +1,5 @@
+import { ChangePassword } from "../../features/account/components/change-password/change-password";
+
 export class APIs {
 
   public static readonly Auth= {
@@ -26,5 +28,13 @@ export class APIs {
     
   };
 
+   public static readonly Account= {
+    userProfile:"users/profile",
+    changePassword:"users/change-password",
+    changeEmailRequest:"users/email/request",
+    confirmEmailChange:"users/email/confirm",
+    deleteAccount:"users/account"
+    
+  };
 
 }
